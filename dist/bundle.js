@@ -8,10 +8,32 @@ module.exports.getMessages = () => {
 };
 
 module.exports.addNewMessage = (newMsg) => {
-    msgArr = msgArr.concat(newMsg);
+    msgArr.push(newMsg);
 };
 
 },{}],2:[function(require,module,exports){
+"use strict";
+
+let messageController = require("./appData");
+let input = document.getElementById("input");
+let output = require ("./outputToDom");
+
+input.addEventListener("keypress", (e) => {
+    const key = e.which || e.keyCode;
+    if (key === 13){
+        let message = input.value;
+        let msgObject = {};
+        msgObject.msg = message;
+        messageController.addNewMessage(msgObject);
+        console.log(messageController.getMessages());
+        
+        
+        // output.NewOutputToDom(messageController.getMessages()); 
+    }
+});
+
+
+},{"./appData":1,"./outputToDom":5}],3:[function(require,module,exports){
 "use strict";
 
 let messageController = require("./appData");
@@ -27,24 +49,26 @@ module.exports.getjsonData =() => {
 
 const parseMsg = () => {
     const msgData = JSON.parse(event.target.responseText).messages;
-    messageController.addNewMessage(msgData); 
+    for (let i = 0; i < msgData.length; i++) {
+        messageController.addNewMessage(msgData[i]); 
+    }    
     output.outputToDom(messageController.getMessages());
 };
 
-},{"./appData":1,"./outputToDom":4}],3:[function(require,module,exports){
+},{"./appData":1,"./outputToDom":5}],4:[function(require,module,exports){
 "use strict";
 
 let json = require("./jsonData");
-let messages = require("./appData");
+let input = require("./input");
 
 json.getjsonData();
 
 
-},{"./appData":1,"./jsonData":2}],4:[function(require,module,exports){
+
+},{"./input":2,"./jsonData":3}],5:[function(require,module,exports){
 "use strict";
 
-module.exports.outputToDom = (objectArr) => {
-    console.log("output to dom called");
+module.exports.firstOutputToDom = (objectArr) => {
     let outputDiv = document.getElementById("output");
     
     for(let i = 0; i < objectArr.length; i++) {
@@ -52,4 +76,8 @@ module.exports.outputToDom = (objectArr) => {
     }
 
 };
-},{}]},{},[3]);
+
+// module.exports.newOutputToDom = (newMessage) => {
+
+// }
+},{}]},{},[4]);

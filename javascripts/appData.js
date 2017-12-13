@@ -7,5 +7,5 @@ module.exports.getMessages = () => {
 };
 
 module.exports.addNewMessage = (newMsg) => {
-    msgArr = msgArr.concat(newMsg);
+    msgArr.push(newMsg);
 };

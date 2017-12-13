@@ -1,7 +1,6 @@
 "use strict";
 
-module.exports.outputToDom = (objectArr) => {
-    console.log("output to dom called");
+module.exports.firstOutputToDom = (objectArr) => {
     let outputDiv = document.getElementById("output");
     
     for(let i = 0; i < objectArr.length; i++) {
@@ -9,3 +8,7 @@ module.exports.outputToDom = (objectArr) => {
     }
 
 };
+
+// module.exports.newOutputToDom = (newMessage) => {
+
+// }
