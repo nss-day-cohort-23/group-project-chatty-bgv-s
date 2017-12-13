@@ -15,7 +15,19 @@ module.exports.addNewMessage = (newMsg) => {
 "use strict";
 
 let messageController = require("./appData");
+let msgArr = messageController.getMessages();
+
+
+module.exports.removeMessage = () => {
+    console.log(event.target.closest);
+};
+},{"./appData":1}],3:[function(require,module,exports){
+"use strict";
+
+let messageController = require("./appData");
 let input = document.getElementById("input");
+let msgArr = messageController.getMessages();
+
 
 input.addEventListener("keypress", (e) => {
     let output = require ("./outputToDom");
@@ -26,17 +38,13 @@ input.addEventListener("keypress", (e) => {
         msgObject.msg = message;
         messageController.addNewMessage(msgObject);
         
-        let index = messageController.getMessages().indexOf(msgObject);
-        
-        console.log(messageController.getMessages()); //Looking to see if new message got added to array
-        // console.log(messageController.getMessages().keys());
-        
+        let index = msgArr.indexOf(msgObject); 
         output.newOutputToDom(msgObject, index);         
     }
 });
 
 
-},{"./appData":1,"./outputToDom":5}],3:[function(require,module,exports){
+},{"./appData":1,"./outputToDom":6}],4:[function(require,module,exports){
 "use strict";
 
 let messageController = require("./appData");
@@ -58,29 +66,40 @@ const parseMsg = () => {
     output.firstOutputToDom(messageController.getMessages());
 };
 
-},{"./appData":1,"./outputToDom":5}],4:[function(require,module,exports){
+},{"./appData":1,"./outputToDom":6}],5:[function(require,module,exports){
 "use strict";
 
 let json = require("./jsonData");
 let input = require("./input");
+let del = require("./delete");
+
 
 json.getjsonData();
 
+let removeMessage = () => {
+    document.querySelector("body").addEventListener("click", function(event){
+        if (event.target.className === "delete") {
+            del.removeMessage();
+        }
+    });
+};
 
 
-},{"./input":2,"./jsonData":3}],5:[function(require,module,exports){
+
+
+},{"./delete":2,"./input":3,"./jsonData":4}],6:[function(require,module,exports){
 "use strict";
 let outputDiv = document.getElementById("output");
 
 module.exports.firstOutputToDom = (objectArr) => {
     
     for(let i = 0; i < objectArr.length; i++) {
-        outputDiv.innerHTML += `<div id = "${i}">${objectArr[i].msg}<button id ="${i}">Delete</button></div>`;
+        outputDiv.innerHTML += `<div id = "${i}">${objectArr[i].msg}<button class="delete">Delete</button></div>`;
     }
 
 };
 
 module.exports.newOutputToDom = (newMessage, index) => {
-    outputDiv.innerHTML += `<div id = "${index}">${newMessage.msg}<button id ="${index}">Delete</button></div>`;
+    outputDiv.innerHTML += `<div id = "${index}">${newMessage.msg}<button class="delete">Delete</button></div>`;
 };
-},{}]},{},[4]);
+},{}]},{},[5]);

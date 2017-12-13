@@ -2,6 +2,8 @@
 
 let messageController = require("./appData");
 let input = document.getElementById("input");
+let msgArr = messageController.getMessages();
+
 
 input.addEventListener("keypress", (e) => {
     let output = require ("./outputToDom");
@@ -12,11 +14,7 @@ input.addEventListener("keypress", (e) => {
         msgObject.msg = message;
         messageController.addNewMessage(msgObject);
         
-        let index = messageController.getMessages().indexOf(msgObject);
-        
-        console.log(messageController.getMessages()); //Looking to see if new message got added to array
-        // console.log(messageController.getMessages().keys());
-        
+        let index = msgArr.indexOf(msgObject); 
         output.newOutputToDom(msgObject, index);         
     }
 });
