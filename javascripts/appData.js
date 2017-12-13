@@ -3,7 +3,7 @@
 let msgArr = [];
 
 module.exports.getMessages = () => {
-    console.log(msgArr);
+    return msgArr;
 };
 
 module.exports.addNewMessage = (newMsg) => {

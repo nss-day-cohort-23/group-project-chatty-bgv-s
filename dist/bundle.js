@@ -4,7 +4,7 @@
 let msgArr = [];
 
 module.exports.getMessages = () => {
-    console.log(msgArr);
+    return msgArr;
 };
 
 module.exports.addNewMessage = (newMsg) => {
@@ -15,6 +15,7 @@ module.exports.addNewMessage = (newMsg) => {
 "use strict";
 
 let messageController = require("./appData");
+let output = require ("./outputToDom");
 
 module.exports.getjsonData =() => {
     let preMsg = null;
@@ -26,11 +27,11 @@ module.exports.getjsonData =() => {
 
 const parseMsg = () => {
     const msgData = JSON.parse(event.target.responseText).messages;
-    messageController.addNewMessage(msgData); //This is our array of orig messages
-    
+    messageController.addNewMessage(msgData); 
+    output.outputToDom(messageController.getMessages());
 };
 
-},{"./appData":1}],3:[function(require,module,exports){
+},{"./appData":1,"./outputToDom":4}],3:[function(require,module,exports){
 "use strict";
 
 let json = require("./jsonData");
@@ -39,4 +40,16 @@ let messages = require("./appData");
 json.getjsonData();
 
 
-},{"./appData":1,"./jsonData":2}]},{},[3]);
+},{"./appData":1,"./jsonData":2}],4:[function(require,module,exports){
+"use strict";
+
+module.exports.outputToDom = (objectArr) => {
+    console.log("output to dom called");
+    let outputDiv = document.getElementById("output");
+    
+    for(let i = 0; i < objectArr.length; i++) {
+        outputDiv.innerHTML += `<div id = "${i}">${objectArr[i].msg}<button id ="${i}">Delete</button></div>`;
+    }
+
+};
+},{}]},{},[3]);

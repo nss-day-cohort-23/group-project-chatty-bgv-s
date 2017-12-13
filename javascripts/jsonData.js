@@ -1,6 +1,7 @@
 "use strict";
 
 let messageController = require("./appData");
+let output = require ("./outputToDom");
 
 module.exports.getjsonData =() => {
     let preMsg = null;
@@ -12,6 +13,6 @@ module.exports.getjsonData =() => {
 
 const parseMsg = () => {
     const msgData = JSON.parse(event.target.responseText).messages;
-    messageController.addNewMessage(msgData); //This is our array of orig messages
-    
+    messageController.addNewMessage(msgData); 
+    output.outputToDom(messageController.getMessages());
 };
