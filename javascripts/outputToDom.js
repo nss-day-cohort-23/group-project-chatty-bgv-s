@@ -1,7 +1,7 @@
 "use strict";
+let outputDiv = document.getElementById("output");
 
 module.exports.firstOutputToDom = (objectArr) => {
-    let outputDiv = document.getElementById("output");
     
     for(let i = 0; i < objectArr.length; i++) {
         outputDiv.innerHTML += `<div id = "${i}">${objectArr[i].msg}<button id ="${i}">Delete</button></div>`;
@@ -9,6 +9,6 @@ module.exports.firstOutputToDom = (objectArr) => {
 
 };
 
-// module.exports.newOutputToDom = (newMessage) => {
-
-// }
+module.exports.newOutputToDom = (newMessage, index) => {
+    outputDiv.innerHTML += `<div id = "${index}">${newMessage.msg}<button id ="${index}">Delete</button></div>`;
+};

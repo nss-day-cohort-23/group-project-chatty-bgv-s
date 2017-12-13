@@ -16,19 +16,22 @@ module.exports.addNewMessage = (newMsg) => {
 
 let messageController = require("./appData");
 let input = document.getElementById("input");
-let output = require ("./outputToDom");
 
 input.addEventListener("keypress", (e) => {
+    let output = require ("./outputToDom");
     const key = e.which || e.keyCode;
     if (key === 13){
         let message = input.value;
         let msgObject = {};
         msgObject.msg = message;
         messageController.addNewMessage(msgObject);
-        console.log(messageController.getMessages());
         
+        let index = messageController.getMessages().indexOf(msgObject);
         
-        // output.NewOutputToDom(messageController.getMessages()); 
+        console.log(messageController.getMessages()); //Looking to see if new message got added to array
+        // console.log(messageController.getMessages().keys());
+        
+        output.newOutputToDom(msgObject, index);         
     }
 });
 
@@ -52,7 +55,7 @@ const parseMsg = () => {
     for (let i = 0; i < msgData.length; i++) {
         messageController.addNewMessage(msgData[i]); 
     }    
-    output.outputToDom(messageController.getMessages());
+    output.firstOutputToDom(messageController.getMessages());
 };
 
 },{"./appData":1,"./outputToDom":5}],4:[function(require,module,exports){
@@ -67,9 +70,9 @@ json.getjsonData();
 
 },{"./input":2,"./jsonData":3}],5:[function(require,module,exports){
 "use strict";
+let outputDiv = document.getElementById("output");
 
 module.exports.firstOutputToDom = (objectArr) => {
-    let outputDiv = document.getElementById("output");
     
     for(let i = 0; i < objectArr.length; i++) {
         outputDiv.innerHTML += `<div id = "${i}">${objectArr[i].msg}<button id ="${i}">Delete</button></div>`;
@@ -77,7 +80,7 @@ module.exports.firstOutputToDom = (objectArr) => {
 
 };
 
-// module.exports.newOutputToDom = (newMessage) => {
-
-// }
+module.exports.newOutputToDom = (newMessage, index) => {
+    outputDiv.innerHTML += `<div id = "${index}">${newMessage.msg}<button id ="${index}">Delete</button></div>`;
+};
 },{}]},{},[4]);

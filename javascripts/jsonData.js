@@ -16,5 +16,5 @@ const parseMsg = () => {
     for (let i = 0; i < msgData.length; i++) {
         messageController.addNewMessage(msgData[i]); 
     }    
-    output.outputToDom(messageController.getMessages());
+    output.firstOutputToDom(messageController.getMessages());
 };
