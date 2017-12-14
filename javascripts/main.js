@@ -7,15 +7,22 @@ let output = require("./outputToDom");
 
 json.getjsonData();
 
-let removeMessage = () => {
-    document.querySelector("body").addEventListener("click", function(event){
-        if (event.target.className === "delete") {
-            let arrayRemoved = del.removeMessage();
-            output.updateDom(arrayRemoved);
-            
-        }
-    });
+let removeMessage = (event) => {
+    if (event.target.className === "delete") {
+        let arrayRemoved = del.removeMessage();
+        output.updateDom(arrayRemoved);   
+    }
 };
 
-removeMessage(); ///need to call lmao
+document.querySelector("body").addEventListener("click", removeMessage);
+
+let clearAll = () => {
+    let clearedArr = del.clearAllMessages();
+    console.log("main.js clearedArr", clearedArr);
+    output.updateDom(clearedArr);
+};
+
+document.getElementById("clear").addEventListener("click", clearAll);
+
+
 

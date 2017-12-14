@@ -9,3 +9,8 @@ module.exports.getMessages = () => {
 module.exports.addNewMessage = (newMsg) => {
     msgArr.push(newMsg);
 };
+
+module.exports.clearAllMessages = () => {
+    msgArr = [];
+    return msgArr;
+};
