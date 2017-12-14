@@ -150,8 +150,23 @@ largeBtn.addEventListener("click", ()=>{
 });
 
 
+const nav = document.querySelector('#navigation');
+const navTop = nav.offsetTop;
 
+function stickNav () {
+    console.log('navTop = ' + navTop);
+    console.log('scrollY = ' + window.scrollY);
+    if (window.scrollY >= navTop){
+        document.body.classList.add('fixed-nav');
+        document.body.style.paddingTop = nav.offsetHeight + 'px';
+        document.body.classList.add('fixed-nav');
+    } else {
+        document.body.style.paddingTop = 0;
+        document.body.classList.remove('fixed-nav');
+    }
+}
 
+window.addEventListener('scroll', stickNav);
 },{"./delete":2,"./disabled":3,"./input":4,"./jsonData":5,"./outputToDom":7}],7:[function(require,module,exports){
 "use strict";
 let outputDiv = document.getElementById("output");
