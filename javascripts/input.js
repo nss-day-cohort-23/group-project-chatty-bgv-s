@@ -15,7 +15,10 @@ input.addEventListener("keypress", (e) => {
         messageController.addNewMessage(msgObject);
         
         let index = msgArr.indexOf(msgObject); 
-        output.newOutputToDom(msgObject, index);         
+        output.newOutputToDom(msgObject, index);
+        
+        input.value="";// remove text from input after enter key 
+          
     }
 });
 

@@ -18,9 +18,22 @@ let messageController = require("./appData");
 let msgArr = messageController.getMessages();
 
 
+
 module.exports.removeMessage = () => {
-    console.log(event.target.closest);
+   
+    let parentClass = event.target.closest(".parent");
+    parentClass.remove();
+    console.log(typeof parentClass.id);
+
+    msgArr.splice(parseInt(parentClass.id),1);
+    console.log(parentClass.id);
+    console.log("this should be the message array",msgArr);
+    return msgArr;
+
+    
 };
+
+
 },{"./appData":1}],3:[function(require,module,exports){
 "use strict";
 
@@ -39,7 +52,10 @@ input.addEventListener("keypress", (e) => {
         messageController.addNewMessage(msgObject);
         
         let index = msgArr.indexOf(msgObject); 
-        output.newOutputToDom(msgObject, index);         
+        output.newOutputToDom(msgObject, index);
+        
+        input.value="";// remove text from input after enter key 
+          
     }
 });
 
@@ -72,34 +88,44 @@ const parseMsg = () => {
 let json = require("./jsonData");
 let input = require("./input");
 let del = require("./delete");
-
+let output = require("./outputToDom");
 
 json.getjsonData();
 
 let removeMessage = () => {
     document.querySelector("body").addEventListener("click", function(event){
         if (event.target.className === "delete") {
-            del.removeMessage();
+            let arrayRemoved = del.removeMessage();
+            output.updateDom(arrayRemoved);
+            
         }
     });
 };
 
+removeMessage(); ///need to call lmao
 
 
-
-},{"./delete":2,"./input":3,"./jsonData":4}],6:[function(require,module,exports){
+},{"./delete":2,"./input":3,"./jsonData":4,"./outputToDom":6}],6:[function(require,module,exports){
 "use strict";
 let outputDiv = document.getElementById("output");
+
 
 module.exports.firstOutputToDom = (objectArr) => {
     
     for(let i = 0; i < objectArr.length; i++) {
-        outputDiv.innerHTML += `<div id = "${i}">${objectArr[i].msg}<button class="delete">Delete</button></div>`;
+        outputDiv.innerHTML += `<div id = "${i}"class="parent">${objectArr[i].msg} <button class="delete">Delete</button></div>`;
     }
 
 };
 
 module.exports.newOutputToDom = (newMessage, index) => {
-    outputDiv.innerHTML += `<div id = "${index}">${newMessage.msg}<button class="delete">Delete</button></div>`;
+    outputDiv.innerHTML += `<div id = "${index}"class="parent">${newMessage.msg}<button class="delete">Delete</button></div>`;
+};
+
+module.exports.updateDom = (objectArr) => {
+    outputDiv.innerHTML = "";
+    for(let i = 0; i < objectArr.length; i++) {
+        outputDiv.innerHTML += `<div id = "${i}"class="parent">${objectArr[i].msg} <button class="delete">Delete</button></div>`;
+    }
 };
 },{}]},{},[5]);
