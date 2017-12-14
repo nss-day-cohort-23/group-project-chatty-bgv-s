@@ -30,3 +30,20 @@ document.getElementById("clear").addEventListener("click", clearAll);
 
 
 
+let largeBtn = document.getElementById("large");
+console.log(largeBtn);
+
+largeBtn.addEventListener("click", ()=>{ 
+    let output = document.getElementById("output");
+    if (largeBtn.checked){
+        console.log("is checked");
+        console.log(largeBtn.checked);
+        let output = document.getElementById("output");
+        output.style.fontSize= "40rem";
+    }else {
+        output.style.fontSize = "2rem";
+    }
+});
+
+
+
