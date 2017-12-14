@@ -134,6 +134,23 @@ document.getElementById("clear").addEventListener("click", clearAll);
 
 
 
+let largeBtn = document.getElementById("large");
+console.log(largeBtn);
+
+largeBtn.addEventListener("click", ()=>{ 
+    let output = document.getElementById("output");
+    if (largeBtn.checked){
+        console.log("is checked");
+        console.log(largeBtn.checked);
+        let output = document.getElementById("output");
+        output.style.fontSize= "40rem";
+    }else {
+        output.style.fontSize = "2rem";
+    }
+});
+
+
+
 
 },{"./delete":2,"./disabled":3,"./input":4,"./jsonData":5,"./outputToDom":7}],7:[function(require,module,exports){
 "use strict";
