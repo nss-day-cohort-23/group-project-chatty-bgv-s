@@ -108,7 +108,12 @@ let json = require("./jsonData");
 let input = require("./input");
 let del = require("./delete");
 let output = require("./outputToDom");
-let toggle = require("./disabled");
+
+// let darkTheme = require("./theme");
+
+
+
+
 
 json.getjsonData();
 
@@ -117,25 +122,45 @@ let removeMessage = (event) => {
         let arrayRemoved = del.removeMessage();
         output.updateDom(arrayRemoved);   
     }
-    toggle.toggleDisabled();
 };
 
 document.querySelector("body").addEventListener("click", removeMessage);
 
 let clearAll = () => {
     let clearedArr = del.clearAllMessages();
+    console.log("main.js clearedArr", clearedArr);
     output.updateDom(clearedArr);
-    toggle.toggleDisabled();
-
 };
 
 document.getElementById("clear").addEventListener("click", clearAll);
 
 
 
+//theme
+let isChecked = false; //is off;
+let drkTheme = document.getElementById("dTheme");
 
 
-},{"./delete":2,"./disabled":3,"./input":4,"./jsonData":5,"./outputToDom":7}],7:[function(require,module,exports){
+drkTheme.addEventListener ("click", function (){
+    let themeChng = document.getElementById("bGround");
+        if (isChecked === false){
+            isChecked = true;
+        }  else {
+            isChecked = false;
+        }
+        
+        if (isChecked) {
+            themeChng.style.backgroundColor = "black";
+            themeChng.style.color = "#FFD134";
+        } else {
+                themeChng.style.backgroundColor = "white";
+                themeChng.style.color = "black";
+        }
+    });
+
+ 
+
+},{"./delete":2,"./input":4,"./jsonData":5,"./outputToDom":7}],7:[function(require,module,exports){
 "use strict";
 let outputDiv = document.getElementById("output");
 

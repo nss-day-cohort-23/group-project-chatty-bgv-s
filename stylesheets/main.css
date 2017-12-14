@@ -1,3 +1,22 @@
+.logo {
+  display: inline;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-size: 3rem;
+  color: #FFD134;
+  letter-spacing: -3px;
+  margin-right: 0.5em;
+  text-shadow: 1px 2px #C13227; }
+
+  div {
+   color: rgba(236, 84, 24, 0.692);
+   
+  }
+
+  nav p input button label{
+    color
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  }
+
 
 
 /*# sourceMappingURL=main.css.map */
