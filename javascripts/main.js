@@ -4,6 +4,7 @@ let json = require("./jsonData");
 let input = require("./input");
 let del = require("./delete");
 let output = require("./outputToDom");
+let toggle = require("./disabled");
 
 json.getjsonData();
 
@@ -12,17 +13,20 @@ let removeMessage = (event) => {
         let arrayRemoved = del.removeMessage();
         output.updateDom(arrayRemoved);   
     }
+    toggle.toggleDisabled();
 };
 
 document.querySelector("body").addEventListener("click", removeMessage);
 
 let clearAll = () => {
     let clearedArr = del.clearAllMessages();
-    console.log("main.js clearedArr", clearedArr);
     output.updateDom(clearedArr);
+    toggle.toggleDisabled();
+
 };
 
 document.getElementById("clear").addEventListener("click", clearAll);
+
 
 
 

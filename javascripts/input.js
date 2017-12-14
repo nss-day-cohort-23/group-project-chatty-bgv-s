@@ -2,6 +2,7 @@
 
 let messageController = require("./appData");
 let input = document.getElementById("input");
+let toggle = require("./disabled");
 
 
 input.addEventListener("keypress", (e) => {
@@ -16,8 +17,8 @@ input.addEventListener("keypress", (e) => {
         
         let index = msgArr.indexOf(msgObject); 
         output.newOutputToDom(msgObject, index);
-        
-        input.value="";// remove text from input after enter key 
+        toggle.toggleDisabled();
+        input.value=""; 
           
     }
 });

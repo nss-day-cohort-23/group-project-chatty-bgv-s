@@ -28,17 +28,13 @@ module.exports.removeMessage = () => {
    
     let parentClass = event.target.closest(".parent");
     parentClass.remove();
-    console.log(typeof parentClass.id);
 
     msgArr.splice(parseInt(parentClass.id),1);
-    console.log(parentClass.id);
-    console.log("this should be the message array",msgArr);
     return msgArr;    
 };
 
 module.exports.clearAllMessages = () => {
     let clearedArr = messageController.clearAllMessages();
-    console.log("delete mod msgArr", clearedArr);
     return clearedArr;
 };
 
@@ -47,7 +43,21 @@ module.exports.clearAllMessages = () => {
 "use strict";
 
 let messageController = require("./appData");
+
+module.exports.toggleDisabled = () => {
+    if (messageController.getMessages().length === 0) {
+        document.getElementById("clear").disabled = true;
+    } else {
+        document.getElementById("clear").disabled = false;    
+    }
+};
+
+},{"./appData":1}],4:[function(require,module,exports){
+"use strict";
+
+let messageController = require("./appData");
 let input = document.getElementById("input");
+let toggle = require("./disabled");
 
 
 input.addEventListener("keypress", (e) => {
@@ -62,14 +72,14 @@ input.addEventListener("keypress", (e) => {
         
         let index = msgArr.indexOf(msgObject); 
         output.newOutputToDom(msgObject, index);
-        
-        input.value="";// remove text from input after enter key 
+        toggle.toggleDisabled();
+        input.value=""; 
           
     }
 });
 
 
-},{"./appData":1,"./outputToDom":6}],4:[function(require,module,exports){
+},{"./appData":1,"./disabled":3,"./outputToDom":7}],5:[function(require,module,exports){
 "use strict";
 
 let messageController = require("./appData");
@@ -91,13 +101,14 @@ const parseMsg = () => {
     output.firstOutputToDom(messageController.getMessages());
 };
 
-},{"./appData":1,"./outputToDom":6}],5:[function(require,module,exports){
+},{"./appData":1,"./outputToDom":7}],6:[function(require,module,exports){
 "use strict";
 
 let json = require("./jsonData");
 let input = require("./input");
 let del = require("./delete");
 let output = require("./outputToDom");
+let toggle = require("./disabled");
 
 json.getjsonData();
 
@@ -106,14 +117,16 @@ let removeMessage = (event) => {
         let arrayRemoved = del.removeMessage();
         output.updateDom(arrayRemoved);   
     }
+    toggle.toggleDisabled();
 };
 
 document.querySelector("body").addEventListener("click", removeMessage);
 
 let clearAll = () => {
     let clearedArr = del.clearAllMessages();
-    console.log("main.js clearedArr", clearedArr);
     output.updateDom(clearedArr);
+    toggle.toggleDisabled();
+
 };
 
 document.getElementById("clear").addEventListener("click", clearAll);
@@ -121,7 +134,8 @@ document.getElementById("clear").addEventListener("click", clearAll);
 
 
 
-},{"./delete":2,"./input":3,"./jsonData":4,"./outputToDom":6}],6:[function(require,module,exports){
+
+},{"./delete":2,"./disabled":3,"./input":4,"./jsonData":5,"./outputToDom":7}],7:[function(require,module,exports){
 "use strict";
 let outputDiv = document.getElementById("output");
 
@@ -139,10 +153,9 @@ module.exports.newOutputToDom = (newMessage, index) => {
 };
 
 module.exports.updateDom = (objectArr) => {
-    console.log("objectArr", objectArr);
     outputDiv.innerHTML = "";
     for(let i = 0; i < objectArr.length; i++) {
         outputDiv.innerHTML += `<div id = "${i}"class="parent">${objectArr[i].msg} <button class="delete">Delete</button></div>`;
     }
 };
-},{}]},{},[5]);
+},{}]},{},[6]);

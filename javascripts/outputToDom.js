@@ -15,7 +15,6 @@ module.exports.newOutputToDom = (newMessage, index) => {
 };
 
 module.exports.updateDom = (objectArr) => {
-    console.log("objectArr", objectArr);
     outputDiv.innerHTML = "";
     for(let i = 0; i < objectArr.length; i++) {
         outputDiv.innerHTML += `<div id = "${i}"class="parent">${objectArr[i].msg} <button class="delete">Delete</button></div>`;
