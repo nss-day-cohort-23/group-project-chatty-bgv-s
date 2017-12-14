@@ -11,15 +11,19 @@ module.exports.addNewMessage = (newMsg) => {
     msgArr.push(newMsg);
 };
 
+module.exports.clearAllMessages = () => {
+    msgArr = [];
+    return msgArr;
+};
 },{}],2:[function(require,module,exports){
 "use strict";
 
 let messageController = require("./appData");
-let msgArr = messageController.getMessages();
 
 
 
 module.exports.removeMessage = () => {
+    let msgArr = messageController.getMessages();
    
     let parentClass = event.target.closest(".parent");
     parentClass.remove();
@@ -28,9 +32,13 @@ module.exports.removeMessage = () => {
     msgArr.splice(parseInt(parentClass.id),1);
     console.log(parentClass.id);
     console.log("this should be the message array",msgArr);
-    return msgArr;
+    return msgArr;    
+};
 
-    
+module.exports.clearAllMessages = () => {
+    let clearedArr = messageController.clearAllMessages();
+    console.log("delete mod msgArr", clearedArr);
+    return clearedArr;
 };
 
 
@@ -92,17 +100,24 @@ let output = require("./outputToDom");
 
 json.getjsonData();
 
-let removeMessage = () => {
-    document.querySelector("body").addEventListener("click", function(event){
-        if (event.target.className === "delete") {
-            let arrayRemoved = del.removeMessage();
-            output.updateDom(arrayRemoved);
-            
-        }
-    });
+let removeMessage = (event) => {
+    if (event.target.className === "delete") {
+        let arrayRemoved = del.removeMessage();
+        output.updateDom(arrayRemoved);   
+    }
 };
 
-removeMessage(); ///need to call lmao
+document.querySelector("body").addEventListener("click", removeMessage);
+
+let clearAll = () => {
+    let clearedArr = del.clearAllMessages();
+    console.log("main.js clearedArr", clearedArr);
+    output.updateDom(clearedArr);
+};
+
+document.getElementById("clear").addEventListener("click", clearAll);
+
+
 
 
 },{"./delete":2,"./input":3,"./jsonData":4,"./outputToDom":6}],6:[function(require,module,exports){
@@ -123,6 +138,7 @@ module.exports.newOutputToDom = (newMessage, index) => {
 };
 
 module.exports.updateDom = (objectArr) => {
+    console.log("objectArr", objectArr);
     outputDiv.innerHTML = "";
     for(let i = 0; i < objectArr.length; i++) {
         outputDiv.innerHTML += `<div id = "${i}"class="parent">${objectArr[i].msg} <button class="delete">Delete</button></div>`;
