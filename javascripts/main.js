@@ -1,21 +1,21 @@
 "use strict";
 
-let preMsg = null;
-let privArr = [];
-const msgReq = new XMLHttpRequest();
-const parseMsg = () => {
-    const msgData = JSON.parse(event.target.responseText).messages;
-    privArr = privArr.concat(msgData); //This is our array of orig messages
-    write();
+let json = require("./jsonData");
+let input = require("./input");
+let del = require("./delete");
+let output = require("./outputToDom");
+
+json.getjsonData();
+
+let removeMessage = () => {
+    document.querySelector("body").addEventListener("click", function(event){
+        if (event.target.className === "delete") {
+            let arrayRemoved = del.removeMessage();
+            output.updateDom(arrayRemoved);
+            
+        }
+    });
 };
 
-msgReq.addEventListener("load", parseMsg);
-msgReq.open("GET", "messages.json");
-msgReq.send();   
+removeMessage(); ///need to call lmao
 
-
-
-
-function write() {
-    console.log(privArr);
-}   
