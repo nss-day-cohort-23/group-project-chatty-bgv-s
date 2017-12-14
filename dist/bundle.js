@@ -9,6 +9,7 @@ module.exports.getMessages = () => {
 
 module.exports.addNewMessage = (newMsg) => {
     msgArr.push(newMsg);
+    return msgArr;
 };
 
 module.exports.clearAllMessages = () => {
@@ -47,10 +48,10 @@ module.exports.clearAllMessages = () => {
 
 let messageController = require("./appData");
 let input = document.getElementById("input");
-let msgArr = messageController.getMessages();
 
 
 input.addEventListener("keypress", (e) => {
+    let msgArr = messageController.getMessages();
     let output = require ("./outputToDom");
     const key = e.which || e.keyCode;
     if (key === 13){

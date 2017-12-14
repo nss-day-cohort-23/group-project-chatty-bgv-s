@@ -2,10 +2,10 @@
 
 let messageController = require("./appData");
 let input = document.getElementById("input");
-let msgArr = messageController.getMessages();
 
 
 input.addEventListener("keypress", (e) => {
+    let msgArr = messageController.getMessages();
     let output = require ("./outputToDom");
     const key = e.which || e.keyCode;
     if (key === 13){
