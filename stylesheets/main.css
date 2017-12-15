@@ -49,4 +49,9 @@ input[type=checkbox]:checked {
 input[type=checkbox]:not(:checked) {
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"> <path id="checkbox-9-icon" d="M391,121v270H121V121H391z M431,81H81v350h350V81z"></path> </svg>'); }
 
+.delete {
+  color: #FFD134;
+  border-color: #FFD134;
+  border-width: .2rem; }
+
 /*# sourceMappingURL=main.css.map */
