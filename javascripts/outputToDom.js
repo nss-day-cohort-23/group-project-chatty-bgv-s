@@ -19,4 +19,8 @@ module.exports.updateDom = (objectArr) => {
     for(let i = 0; i < objectArr.length; i++) {
         outputDiv.innerHTML += `<div id = "${i}"class="parent">${objectArr[i].msg} <button class="delete">Delete</button></div>`;
     }
+
+    
 };
+
+

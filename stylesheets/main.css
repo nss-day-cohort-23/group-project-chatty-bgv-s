@@ -1,13 +1,42 @@
 .logo {
   display: inline;
   font-family: Futura;
-  font-size: 3rem;
+  font-size: 5rem;
   color: #FFD134;
   letter-spacing: -3px;
   margin-right: 0.5em;
   text-shadow: 1px 2px #C13227; }
 
-/*# sourceMappingURL=main.css.map */
-.fixed-nav nav{
+#bodyBg {
+  font-family: Futura;
+  font-size: 1.25em;
+  background-image: url("../stylesheets/img/bg.png"); }
+
+nav {
   position: fixed;
-}
+  color: rgba(255, 255, 255, 0);
+  z-index: 1;
+  bottom: 0; }
+
+nav:hover {
+  color: black;
+  transition-duration: 2s; }
+
+.parent {
+  padding-top: .5em;
+  z-index: -1;
+  font-size: 1.25em;
+  margin-top: .5em;
+  text-align: right; }
+
+.delete {
+  color: #FFD134;
+  border-color: #FFD134;
+  border-width: .2rem; }
+
+#clear {
+  color: #FFD134;
+  border-color: #FFD134;
+  border-width: .2rem; }
+
+/*# sourceMappingURL=main.css.map */

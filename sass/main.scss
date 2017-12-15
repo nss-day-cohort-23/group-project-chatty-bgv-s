@@ -1,10 +1,75 @@
 .logo {
     display: inline;
     font-family: Futura;
-    font-size: 3rem;
+    font-size: 5rem;
     color: #FFD134;
     letter-spacing: -3px;
     margin-right: 0.5em;
     text-shadow: 1px 2px #C13227;
+}
+
+
+#bodyBg {
+    font-family: Futura;
+    font-size: 1.25em;
+    background-image: url("../stylesheets/img/bg.png")
+    
+}
+
+
+
+nav {
+    position:fixed; //can remove for logo position
+    color: rgba(255, 255, 255, 0);
+    z-index: 1;
+    bottom: 0; //can remove for logo position
+
+
+}
+
+nav:hover {
+        color: rgb(0, 0, 0);
+        transition-duration: 2s;
+}
+
+.parent {
+         padding-top: .5em;       
+        z-index: -1;
+        font-size: 1.25em; 
+        margin-top: .5em;
+        text-align: right;
+}
+
+//checkbox
+// input[type=checkbox] {
+//     display: inline;
+//     width: 30px;
+//     height: 30px;
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     background-size: contain;
+//     -webkit-appearance: none;
+//     outline: 0;
+// }
+// input[type=checkbox]:checked {
+//     background-color: yellow;
+// }
+
+// input[type=checkbox]:not(:checked) {
+//     background-color: yellow;
+// }
+
+//delete buttons
+
+.delete {
+    color:  #FFD134;
+    border-color:  #FFD134;
+    border-width: .2rem;
+}
+
+#clear {
+    color:  #FFD134;
+    border-color:  #FFD134;
+    border-width: .2rem;
 }
 

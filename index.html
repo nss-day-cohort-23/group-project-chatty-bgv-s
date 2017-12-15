@@ -7,15 +7,21 @@
     <link rel="stylesheet" href="stylesheets/main.css">
     <title>Document</title>
 </head>
-<body>
+<body id=bodyBg>
+    
     <nav id="navigation">
         <p class="logo">Chatty</p>
         <input type = "text" id = "input">
         <button id="clear">CLEAR MESSAGES</button> <!--add clear btn -->
         <input type="checkbox" id="large" name="large" value= "large">
         <label for="large">Large</label>
+        <input type="checkbox" id="darkTheme" name="darktheme" value="darktheme">
+        <label for="darktheme">Dark Theme</label>
     </nav>
-    <div id="output"></div>
+    
+    <div id="bGround">
+        <div id="output"></div>
+    </div>
 
     <script src="dist/bundle.js"></script>
 </body>
