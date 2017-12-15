@@ -8,10 +8,6 @@
     text-shadow: 1px 2px #C13227;
 }
 
-.fixed-nav nav {
-    position: fixed;
-    top: 78%; //can remove for logo position
-  }
 
 #bodyBg {
     font-family: Futura;
@@ -23,10 +19,10 @@
 
 
 nav {
-    position:absolute; //can remove for logo position
+    position:fixed; //can remove for logo position
     color: rgba(255, 255, 255, 0);
     z-index: 1;
-    top: 78%; //can remove for logo position
+    bottom: 0; //can remove for logo position
 
 
 }
@@ -45,22 +41,23 @@ nav:hover {
 }
 
 //checkbox
-input[type=checkbox] {
-    display: inline;
-    width: 30px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    -webkit-appearance: none;
-    outline: 0;
-}
-input[type=checkbox]:checked {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path id="checkbox-3-icon" fill="#000" d="M81,81v350h350V81H81z M227.383,345.013l-81.476-81.498l34.69-34.697l46.783,46.794l108.007-108.005 l34.706,34.684L227.383,345.013z"/></svg>');
-}
-input[type=checkbox]:not(:checked) {
-    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"> <path id="checkbox-9-icon" d="M391,121v270H121V121H391z M431,81H81v350h350V81z"></path> </svg>');
-}
+// input[type=checkbox] {
+//     display: inline;
+//     width: 30px;
+//     height: 30px;
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     background-size: contain;
+//     -webkit-appearance: none;
+//     outline: 0;
+// }
+// input[type=checkbox]:checked {
+//     background-color: yellow;
+// }
+
+// input[type=checkbox]:not(:checked) {
+//     background-color: yellow;
+// }
 
 //delete buttons
 
@@ -69,3 +66,10 @@ input[type=checkbox]:not(:checked) {
     border-color:  #FFD134;
     border-width: .2rem;
 }
+
+#clear {
+    color:  #FFD134;
+    border-color:  #FFD134;
+    border-width: .2rem;
+}
+
