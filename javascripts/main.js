@@ -41,7 +41,7 @@ largeBtn.addEventListener("click", ()=>{
         let output = document.getElementById("output");
         output.style.fontSize= "40rem";
     }else {
-        output.style.fontSize = "2rem";
+        output.style.fontSize = "1em";
     }
 });
 
@@ -76,8 +76,8 @@ drkTheme.addEventListener("click", function(){
         }
 
         if (isChecked){
-            themeChng.style.background = "black";
-            themeChng.style.color = "#FFD134";
+            themeChng.style.background = "rgba(14, 42, 84, 0.89)";
+            themeChng.style.color = "rgba(255, 208, 52, 0.801)";
         } else {
             themeChng.style.background = "white";
             themeChng.style.color = "black";

@@ -1,7 +1,7 @@
 .logo {
     display: inline;
     font-family: Futura;
-    font-size: 3rem;
+    font-size: 5rem;
     color: #FFD134;
     letter-spacing: -3px;
     margin-right: 0.5em;
@@ -10,23 +10,36 @@
 
 .fixed-nav nav {
     position: fixed;
+    top: 78%; //can remove for logo position
   }
 
-body {
+#bodyBg {
     font-family: Futura;
-    font-size: 2em;
-
+    font-size: 1.25em;
+    background-image: url("../stylesheets/img/bg.png")
+    
 }
+
+
 
 nav {
+    position:absolute; //can remove for logo position
+    color: rgba(255, 255, 255, 0);
+    z-index: 1;
+    top: 78%; //can remove for logo position
 
-    z-index: 1
 
 }
-div {
-        padding-top: .5em;
-       
+
+nav:hover {
+        color: rgb(0, 0, 0);
+        transition-duration: 2s;
+}
+
+.parent {
+         padding-top: .5em;       
         z-index: -1;
-
-
+        font-size: 1.25em; 
+        margin-top: .5em;
+        text-align: right;
 }
