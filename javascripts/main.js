@@ -39,7 +39,7 @@ largeBtn.addEventListener("click", ()=>{
         console.log("is checked");
         console.log(largeBtn.checked);
         let output = document.getElementById("output");
-        output.style.fontSize= "40rem";
+        output.style.fontSize= "5rem";
     }else {
         output.style.fontSize = "1em";
     }
