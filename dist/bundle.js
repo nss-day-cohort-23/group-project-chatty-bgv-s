@@ -167,6 +167,26 @@ function stickNav () {
 }
 
 window.addEventListener('scroll', stickNav);
+
+//theme
+let isChecked = false;
+let drkTheme = document.getElementById("darkTheme");
+drkTheme.addEventListener("click", function(){
+    let themeChng = document.getElementById("bGround");
+        if (isChecked === false){
+            isChecked = true;
+        }else {
+            isChecked = false;
+        }
+
+        if (isChecked){
+            themeChng.style.background = "black";
+            themeChng.style.color = "#FFD134";
+        } else {
+            themeChng.style.background = "white";
+            themeChng.style.color = "black";
+        }
+});
 },{"./delete":2,"./disabled":3,"./input":4,"./jsonData":5,"./outputToDom":7}],7:[function(require,module,exports){
 "use strict";
 let outputDiv = document.getElementById("output");
